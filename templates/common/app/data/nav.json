@@ -1,0 +1,41 @@
+{
+  "errCode": 0,
+  "errMsg": "success",
+  "dataList": [{
+      "subList": [{
+          "subList": [{
+              "title": "会员卡管理",
+              "url": "/card/card.htm#/cardInfo"
+          },
+          {
+              "title": "权益管理",
+              "url": "/card/card.htm#/cardGain"
+          },
+          {
+              "title": "会员管理",
+              "url": "/card/card.htm#/cardMember"
+          }],
+          "title": "会员卡",
+          "url": "/card/card.htm"
+      }],
+      "isCurrent": true,
+      "title": "会员",
+      "iconCls": "member",
+      "url": "/card/cardTemInfo.htm"
+  },
+  {
+      "title": "营销",
+      "iconCls": "marketing",
+      "url": "/marketing/coupon.htm#/index"
+  },
+  {
+      "title": "信息",
+      "iconCls": "info",
+      "url": "/daogoubao/store.htm"
+  },
+  {
+      "title": "数据",
+      "iconCls": "report",
+      "url": "/sales/salesImport.htm"
+  }]
+}

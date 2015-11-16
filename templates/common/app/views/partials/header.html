@@ -1,0 +1,20 @@
+<header ng-controller="LoginCtrl" id="header">
+    <h1>
+        <a href="/">o2o商家后台</a>
+    </h1>
+
+    <div class="header-right" ng-switch="isLogin">
+        <a ng-show="!isLogin" ng-href="{{getLoginHref()}}">用户登录</a>
+        <span ng-show="isLogin">{{nickName}}</span>
+        <a ng-show="isLogin" ng-href="{{getLogoutHref()}}"><i class="loginOut"></i>退出</a>
+    </div>
+</header>
+
+<div class="dpl-toast" ng-class="{'dpl-toast-ok': toastType=='success'}" ng-show="toastshow==true">
+    <span class="dpl-toast-tip">
+        <span class="dpl-toast-inner">
+            <i class="dpl-toast-ico"></i>
+            <span class="dpl-toast-text">{{toastMsg}}</span>
+        </span>
+    </span>
+</div>

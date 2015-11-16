@@ -1,0 +1,8 @@
+Description:
+    Creates a new AngularJS service.
+
+Example:
+    yo star:value thing
+
+    This will create:
+        app/scripts/services/thing.js

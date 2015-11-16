@@ -1,0 +1,28 @@
+<!-- side start -->
+<div id="side" ng-controller="SidebarCtrl" ng-class="{sideClose: systemData.navBarClose}">
+    <div class="side-category">
+        <ul>
+            <li class="J-side-category-item" ng-repeat="item in navList" ng-class="{active: item.isCurrent==true}">
+                <a ng-href="{{item.url}}">
+                    <i class="{{item.iconCls}}"></i>{{item.title}}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="side-scroll">
+        <div class="side-nav J-side-nav" data-num="0" style="display: block">
+            <dl class="side-nav-hover" ng-repeat="subList in currList">
+                <dt ng-if="subList.url.length">
+                    <a ng-href="{{subList.url}}">{{subList.title}}</a>
+                </dt>
+                <dt ng-if="subList.url==''"><span>{{subList.title}}</span></dt>
+                <dd ng-repeat="sub in subList.subList">
+                    <a ng-href="{{sub.url}}" ng-class="{active: oActive==getHash(sub.url)}"><s></s>{{sub.title}}</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <a href="javascript:" class="control-btn" ng-class="{controlBtnActive: systemData.navBarClose}" ng-click="toggleSidebar()"></a>
+</div>

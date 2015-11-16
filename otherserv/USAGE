@@ -1,0 +1,8 @@
+Description:
+    Creates a new AngularJS init file
+
+Example:
+    yo star:otherserv thing
+
+    This will create:
+        app/scripts/services/thing.js

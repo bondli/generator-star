@@ -1,0 +1,28 @@
+{
+  "name": "include components you want to used in project",
+  "dependencies": [
+    "clickAnyWhereButHere",
+    "selectbox",
+    "substr"
+  ],
+  "components": [
+    "categorySelect",
+    "categorybox",
+    "citySelect",
+    "cropImageUpload",
+    "dateRangePicker",
+    "dateSimplePicker",
+    "edittable",
+    "fileimport",
+    "groupSelect",
+    "highcharts",
+    "modalPopover",
+    "multiSelectbox",
+    "selectSearch",
+    "storebox",
+    "storeboxCity",
+    "suggestion",
+    "uploadbox",
+    "utils"
+  ]
+}

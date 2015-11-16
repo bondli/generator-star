@@ -1,0 +1,8 @@
+Description:
+    Creates a new AngularJS init file
+
+Example:
+    yo star:otherctrl thing
+
+    This will create:
+        app/scripts/controllers/thing.js
