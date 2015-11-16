@@ -1,6 +1,6 @@
 {
   "name": "generator-star",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Yeoman generator for AngularJS using RequireJS",
   "keywords": [
     "yeoman-generator",
@@ -49,7 +49,6 @@
     "wiredep": "~1.0.0"
   },
   "peerDependencies": {
-    "generator-karma-require": ">=0.1.6",
     "yo": ">=1.0.0"
   },
   "devDependencies": {
