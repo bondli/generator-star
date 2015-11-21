@@ -43,6 +43,8 @@ var Generator = module.exports = function Generator(args, options) {
 
   this.appPath = this.env.options.appPath;
 
+  this.env.options.theme = this.options.theme || '';
+
   this.hookFor('star:common', {
     args: args
   });
@@ -109,94 +111,14 @@ Generator.prototype.welcome = function welcome() {
   }
 };
 
-/*
-Generator.prototype.askForCompass = function askForCompass() {
-  var cb = this.async();
-
-  this.prompt([{
-    type: 'confirm',
-    name: 'compass',
-    message: 'Would you like to use Sass (with Compass)?',
-    default: true
-  }], function (props) {
-    this.compass = props.compass;
-
-    cb();
-  }.bind(this));
-};
-*/
-/*
-Generator.prototype.askForBootstrap = function askForBootstrap() {
-  var compass = this.compass;
-  var cb = this.async();
-
-  this.prompt([{
-    type: 'confirm',
-    name: 'bootstrap',
-    message: 'Would you like to include Bootstrap?',
-    default: true
-  }, {
-    type: 'confirm',
-    name: 'compassBootstrap',
-    message: 'Would you like to use the Sass version of Bootstrap?',
-    default: true,
-    when: function (props) {
-      return props.bootstrap && compass;
-    }
-  }], function (props) {
-    this.bootstrap = props.bootstrap;
-    this.compassBootstrap = props.compassBootstrap;
-
-    cb();
-  }.bind(this));
-};
-*/
-/*
-Generator.prototype.askForModules = function askForModules() {
-  var cb = this.async();
-
-  var prompts = [{
-    type: 'checkbox',
-    name: 'modules',
-    message: 'Which modules would you like to include?',
-    choices: [{
-      value: 'cookiesModule',
-      name: 'angular-cookies.js',
-      checked: true
-    }, {
-      value: 'sanitizeModule',
-      name: 'angular-sanitize.js',
-      checked: true
-    }]
-  }];
-
-  this.prompt(prompts, function (props) {
-    var hasMod = function (mod) { return props.modules.indexOf(mod) !== -1; };
-    this.cookiesModule = hasMod('cookiesModule');
-    this.sanitizeModule = hasMod('sanitizeModule');
-
-    var angMods = [];
-
-    if (this.cookiesModule) {
-      angMods.push("'ngCookies'");
-    }
-
-    if (this.sanitizeModule) {
-      angMods.push("'ngSanitize'");
-    }
-
-    if (angMods.length) {
-      this.env.options.angularDeps = '\n    ' + angMods.join(',\n    ') + '\n  ';
-    }
-
-    cb();
-  }.bind(this));
-};
-*/
-
 Generator.prototype.readIndex = function readIndex() {
-  this.ngRoute = this.env.options.ngRoute;
-  this.indexFile = this.engine(this.read('app/index.html'), this);
+  var theme = this.options.theme;
+  if(theme != undefined && theme != ''){
+    this.indexFile = this.engine(this.read('app/index-'+theme+'.html'), this);
+  }
+  else {
+    this.indexFile = this.engine(this.read('app/index.html'), this);
+  }
 };
 
 Generator.prototype.bootstrapFiles = function bootstrapFiles() {

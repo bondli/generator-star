@@ -1,0 +1,24 @@
+<!-- side start -->
+<div id="side" ng-controller="SidebarCtrl" ng-class="{sideClose: systemData.navBarClose}">
+    <div class="side-nav">
+        <dl ng-repeat="item in navList">
+            <dt ng-if="item.url!=''" ng-class="{active: item.isCurrent==true}">
+                <a ng-href="{{item.url}}">
+                    <i class="iconfont icon-information"></i>
+                    {{item.title}}
+                    <s class="iconfont icon-cret"></s>
+                </a>
+            </dt>
+            <dt ng-if="item.url==''" ng-class="{active: item.isCurrent==true}">
+                <span>
+                    <i class="iconfont icon-information"></i>
+                    {{item.title}}
+                    <s class="iconfont icon-cret"></s>
+                </span>
+            </dt>
+            <dd ng-repeat="sub in item.subList" ng-class="{show: item.isCurrent==true}">
+                <a ng-href="{{sub.url}}" ng-class="{active: oActive==getHash(sub.url)}">{{sub.title}}</a>
+            </dd>
+        </dl>
+    </div>
+</div>

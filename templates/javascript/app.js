@@ -69,8 +69,9 @@ define(['angular']/*deps*/, function (angular)/*invoke*/ {
                     }
 
                     //__WPO上报ajax返回码
+                    var apiName = (response.config.url).replace(window.location.protocol + '//' + window.location.hostname + '/', '');
                     typeof(__WPO)!=='undefined' && __WPO.retCode(
-                        window.location.protocol + '//' + window.location.hostname + '/' + response.config.url,
+                        apiName.substring(0, apiName.indexOf('?')>-1 ? apiName.indexOf('?') : 100),
                         true,
                         new Date().getTime() - response.config.startTime,
                         '获取数据成功-' + flag
@@ -87,8 +88,9 @@ define(['angular']/*deps*/, function (angular)/*invoke*/ {
                 }
 
                 //__WPO上报ajax返回码
+                var apiName = (response.config.url).replace(window.location.protocol + '//' + window.location.hostname + '/', '');
                 typeof(__WPO)!=='undefined' && __WPO.retCode(
-                    window.location.protocol + '//' + window.location.hostname + '/' + response.config.url,
+                    apiName.substring(0, apiName.indexOf('?')>-1 ? apiName.indexOf('?') : 100),
                     false,
                     new Date().getTime() - rejection.config.startTime,
                     '获取数据失败-' + rejection.status

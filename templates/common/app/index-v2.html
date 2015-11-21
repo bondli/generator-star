@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="no-js" ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="dns-prefetch" href="//g.alicdn.com">
+    <link rel="dns-prefetch" href="//at.alicdn.com">
+    <link rel="dns-prefetch" href="//img.alicdn.com">
+    <link rel="dns-prefetch" href="//cdn.mmstat.com">
+    <link rel="dns-prefetch" href="//log.mmstat.com">
+
+    <title><%= scriptAppName %></title>
+
+    <!-- build:css(.) styles/bootstrap.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css(.) styles/ui.star.v2.css -->
+    <link rel="stylesheet" href="bower_components/star-ui/build/ui.star.v2.css" />
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+<body ng-app="<%= scriptAppName %>" ng-init="systemData={navBarClose:flase,renderByNode:false}">
+    <!--[if IE]>
+      <p class="browsehappy">你正在使用IE浏览器，本网站在谷歌chrome浏览器下效果最佳，建议使用谷歌chrome浏览器来访问，<a href="http://www.google.cn/chrome/browser/desktop/index.html">点击下载谷歌浏览器</a>.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container-fluid" ng-controller="GlobalCtrl">
+        <div class="clearfix" ng-include="'views/partials/header.html'"></div>
+        <div class="container-con wrap clearfix">
+            <div class="sidebar">
+                <div ng-include="'views/partials/sidebar.html'"></div>
+            </div>
+            <div class="main" id="main" ng-class="{mainClose: systemData.navBarClose}">
+                <div ui-view></div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div ng-include="'views/partials/footer.html'"></div>
+        </div>
+    </div>
+
+    <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>
+
+    <script src="//g.alicdn.com/cm/log/log.js"></script>
+    <script>
+        typeof(__WPO)!=='undefined' && __WPO.setConfig({sample:1});
+    </script>
+</body>
+</html>

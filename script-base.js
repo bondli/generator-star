@@ -98,13 +98,17 @@ Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate,
   }
 };
 
-Generator.prototype.otherTemplate = function (name, type) {
+Generator.prototype.otherTemplate = function (name, type, theme) {
   var dest = path.join('scripts', type, name);
   if(type == 'service'){
     dest = path.join('scripts', 'services', name);
   }
+  var srcFile = type + '/' + name + this.scriptSuffix;
+  if(theme != undefined){
+    srcFile = type + '/' + name + '-' + theme + this.scriptSuffix;
+  }
   yeoman.generators.Base.prototype.template.apply(this, [
-    type + '/' + name + this.scriptSuffix,
+    srcFile,
     path.join(this.env.options.appPath, dest.toLowerCase()) + this.scriptSuffix
   ]);
 };

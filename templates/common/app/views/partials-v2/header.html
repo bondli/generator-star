@@ -1,0 +1,25 @@
+<header ng-controller="LoginCtrl" class="header">
+    <h1 class="header-logo" ng-class="{logoClose: systemData.navBarClose}">
+        <i class="iconfont icon-logo"></i>喵街<s></s>商家端
+    </h1>
+
+    <div class="header-menuctrl">
+        <a href="javascript:" ng-class="{active: systemData.navBarClose}" ng-click="toggleSidebar()"></a>
+        <div><input type="text" placeholder="检索菜单" /></div>
+    </div>
+
+    <div class="header-right" ng-switch="isLogin">
+        <a ng-show="!isLogin" ng-href="{{getLoginHref()}}">用户登录</a>
+        <span ng-show="isLogin">{{nickName}}</span>
+        <a ng-show="isLogin" ng-href="{{getLogoutHref()}}"><i class="loginOut"></i>退出</a>
+    </div>
+</header>
+
+<div class="dpl-toast" ng-class="{'dpl-toast-ok': toastType=='success'}" ng-show="toastshow==true">
+    <span class="dpl-toast-tip">
+        <span class="dpl-toast-inner">
+            <i class="dpl-toast-ico"></i>
+            <span class="dpl-toast-text">{{toastMsg}}</span>
+        </span>
+    </span>
+</div>

@@ -21,14 +21,28 @@ Generator.prototype.setupEnv = function setupEnv() {
 
   this.sourceRoot(join(__dirname, '../templates/common'));
   var appPath = this.options.appPath;
-  var copy = function (dest) {
-    this.copy(join('app', dest), join(appPath, dest));
+  var copy = function (dest, rename) {
+    if(rename != undefined){
+      this.copy(join('app', dest), join(appPath, rename));
+    }
+    else {
+      this.copy(join('app', dest), join(appPath, dest));
+    }
   }.bind(this);
 
-  copy('views/main.html');
-  copy('views/partials/header.html');
-  copy('views/partials/sidebar.html');
-  copy('views/partials/footer.html');
+  if(this.options.theme != ''){
+    var theme = this.options.theme;
+    copy('views/main-'+theme+'.html', 'views/main.html');
+    copy('views/partials-'+theme+'/header.html', 'views/partials/header.html');
+    copy('views/partials-'+theme+'/sidebar.html', 'views/partials/sidebar.html');
+    copy('views/partials-'+theme+'/footer.html', 'views/partials/footer.html');
+  }
+  else {
+    copy('views/main.html');
+    copy('views/partials/header.html');
+    copy('views/partials/sidebar.html');
+    copy('views/partials/footer.html');
+  }
 
   copy('data/nav.json');
   copy('data/submit.json');

@@ -19,7 +19,8 @@ util.inherits(Generator, ScriptBase);
 Generator.prototype.createOtherctrlFiles = function createOtherctrlFiles() {
   this.otherTemplate(
     this.name,
-    'controllers'
+    'controllers',
+    this.options.theme
   );
 };
 
