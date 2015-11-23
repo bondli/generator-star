@@ -19,6 +19,7 @@ define(['angular'], function (angular) {
             return {
                 //通用接口，无需修改
                 'nav' : 'data/nav.json',
+                'menu' : 'data/menu.json',
                 'uploadbyCorp' : 'data/submit.json',
                 'upload' : 'data/submit.json',
                 //你的接口
@@ -28,6 +29,7 @@ define(['angular'], function (angular) {
         return {
             //通用接口，无需修改
             'nav' : apiUrlPre + 'common/OpMenuAction.action?action=/common/OpMenuAction&event_submit_doLeftList=1&key=info',
+            'menu' : apiUrlPre + 'common/OpMenuAction.action?action=/common/OpMenuAction&event_submit_doLeftList=1&key=info',
             'uploadbyCorp' : apiUrlPre + 'common/OpImageAction.action?action=/common/OpImageAction&event_submit_doUploadString=1',
             'upload' : apiUrlPre + 'common/OpImageUpload.do',
             //你的接口

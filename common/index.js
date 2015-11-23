@@ -45,6 +45,7 @@ Generator.prototype.setupEnv = function setupEnv() {
   }
 
   copy('data/nav.json');
+  copy('data/menu.json');
   copy('data/submit.json');
 
 };

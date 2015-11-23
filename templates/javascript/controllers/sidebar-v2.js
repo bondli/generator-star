@@ -9,7 +9,7 @@ define(['angular'], function (angular) {
      * Controller of the <%= scriptAppName %>
      */
     angular.module('<%= scriptAppName %>.controllers.SidebarCtrl', [])
-        .controller('SidebarCtrl', ['$rootScope', '$scope', '$http', 'Apimap','$location',
+        .controller('SidebarCtrl', ['$rootScope', '$scope', '$http', 'Apimap', '$location',
         function($rootScope, $scope, $http, Apimap, $location){
 
         //定义项目中内部controller也要使菜单高亮

@@ -3,13 +3,13 @@ define(['angular'], function (angular) {
 
     /**
      * @ngdoc function
-     * @name <%= scriptAppName %>.controller:LoginCtrl
+     * @name testapp1App.controller:LoginCtrl
      * @description
      * # LoginCtrl
-     * Controller of the <%= scriptAppName %>
+     * Controller of the testapp1App
      */
-    angular.module('<%= scriptAppName %>.controllers.LoginCtrl', [])
-        .controller('LoginCtrl', ['$rootScope', '$scope', '$location', '$cookies', function ($rootScope, $scope, $location, $cookies){
+    angular.module('testapp1App.controllers.LoginCtrl', [])
+        .controller('LoginCtrl', ['$rootScope', '$scope', '$location', '$cookies', '$http', 'Apimap', function ($rootScope, $scope, $location, $cookies, $http, Apimap){
 
         //只有本地开发的时候才执行
         if($rootScope.systemData.renderByNode == false){
@@ -51,6 +51,12 @@ define(['angular'], function (angular) {
             location.href = $scope.getLogoutHref();
         };
 
+        //获取头像
+        $scope.userAvatar = function () {
+            var userId = $cookies.unb || 1;
+            return 'https://wwc.alicdn.com/avatar/getAvatar.do?userId='+userId+'&width=40&height=40&type=sns';
+        };
+
         //左侧收缩
         $scope.toggleSidebar = function(){
             $rootScope.systemData.navBarClose = !!!$rootScope.systemData.navBarClose;
@@ -63,6 +69,56 @@ define(['angular'], function (angular) {
             window.localStorage && window.localStorage.setItem('o2osellerLogintoHash', curHash);
             location.href = $scope.getLoginHref();
         });
+
+        var isloading = false;
+        $scope.menusShowHide = false;
+        $scope.queryMenuSetItem = function(item) {
+            //修改默认的文本
+            $scope.menukey = item.title;
+            if(item.url){
+                window.location.href = item.url;
+            }
+            return $scope.menusShowHide = false;
+        };
+        //执行搜索
+        $scope.queryMenu = function(){
+            if(!$scope.menukey || isloading){
+                return;
+            }
+            isloading = true;
+
+            $http.get(Apimap.menu, {params: {'key': $scope.menukey}}).success(function(res){
+                isloading = false;
+                if (res.dataList.length == 0){
+                    $scope.menusShowHide = false;
+                    return;
+                }
+
+                $scope.menusShowHide = true;
+
+                var datalist = res.dataList,
+                    list = [],
+                    count = 0,
+                    max = 10;
+
+                for (var i = datalist.length - 1; i >= 0; i--){
+                    if(count >= max){ //只取10条记录
+                        return;
+                    }
+                    list.push({
+                        'url': datalist[i].url,
+                        'title': datalist[i].title
+                    });
+                    count++;
+                }
+
+                $scope.menuItems = list;
+
+            }).error(function(e){
+                isloading = false;
+                $scope.menusShowHide = false;
+            });
+        };
 
     }]);
 });

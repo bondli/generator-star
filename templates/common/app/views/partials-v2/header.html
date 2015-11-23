@@ -1,17 +1,37 @@
 <header ng-controller="LoginCtrl" class="header">
     <h1 class="header-logo" ng-class="{logoClose: systemData.navBarClose}">
-        <i class="iconfont icon-logo"></i>喵街<s></s>商家端
+        <i class="iconfont icon-logo"></i>
+        <span>喵街<s></s>商家端</span>
     </h1>
 
     <div class="header-menuctrl">
-        <a href="javascript:" ng-class="{active: systemData.navBarClose}" ng-click="toggleSidebar()"></a>
-        <div><input type="text" placeholder="检索菜单" /></div>
+        <a href="javascript:;" class="iconfont icon-menu" ng-class="{menuClose: systemData.navBarClose}" ng-click="toggleSidebar()"></a>
+        <div>
+            <input type="text" placeholder="检索菜单" ng-model="menukey" ng-keyup="queryMenu()" />
+            <ul ng-show="menusShowHide == true" click-any-where-but-here="menusShowHide=false">
+                <li ng-repeat="item in menuItems" ng-click="queryMenuSetItem(item)">
+                    <p class="name">{{item.title}}</p>
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <div class="header-right" ng-switch="isLogin">
-        <a ng-show="!isLogin" ng-href="{{getLoginHref()}}">用户登录</a>
-        <span ng-show="isLogin">{{nickName}}</span>
-        <a ng-show="isLogin" ng-href="{{getLogoutHref()}}"><i class="loginOut"></i>退出</a>
+    <div class="header-right" ng-if="!isLogin">
+        <a ng-href="{{getLoginHref()}}">用户登录</a>
+    </div>
+    <div class="header-right" ng-if="isLogin">
+        <span>
+            <img class="userAvatar" ng-src="{{userAvatar()}}" />
+            <em>{{nickName}}</em>
+        </span>
+        <span>
+            <i class="iconfont modifyPwd"></i>
+            <a href="https://110.taobao.com/account/product_validate.htm?type=password">修改密码</a>
+        </span>
+        <span>
+            <i class="iconfont loginOut"></i>
+            <a ng-href="{{getLogoutHref()}}">退出</a>
+        </span>
     </div>
 </header>
 

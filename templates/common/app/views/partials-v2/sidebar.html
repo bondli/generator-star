@@ -4,20 +4,21 @@
         <dl ng-repeat="item in navList">
             <dt ng-if="item.url!=''" ng-class="{active: item.isCurrent==true}">
                 <a ng-href="{{item.url}}">
-                    <i class="iconfont icon-information"></i>
-                    {{item.title}}
-                    <s class="iconfont icon-cret"></s>
+                    <i class="iconfont icon-nav {{item.iconCls}}"></i>
+                    <em class="nav-name">{{item.title}}</em>
+                    <i class="iconfont icon-cret"></i>
                 </a>
             </dt>
             <dt ng-if="item.url==''" ng-class="{active: item.isCurrent==true}">
                 <span>
-                    <i class="iconfont icon-information"></i>
-                    {{item.title}}
-                    <s class="iconfont icon-cret"></s>
+                    <i class="iconfont icon-nav {{item.iconCls}}"></i>
+                    <em class="nav-name">{{item.title}}</em>
+                    <i class="iconfont icon-cret"></i>
                 </span>
             </dt>
-            <dd ng-repeat="sub in item.subList" ng-class="{show: item.isCurrent==true}">
-                <a ng-href="{{sub.url}}" ng-class="{active: oActive==getHash(sub.url)}">{{sub.title}}</a>
+            <dd ng-class="{show: item.isCurrent==true}">
+                <a class="item-main-nav" ng-href="{{item.url ? item.url : 'javascript:;'}}">{{item.title}}</a>
+                <a ng-repeat="sub in item.subList" ng-href="{{sub.url}}" ng-class="{active: oActive==getHash(sub.url)}">{{sub.title}}</a>
             </dd>
         </dl>
     </div>
