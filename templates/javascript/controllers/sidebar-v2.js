@@ -68,5 +68,23 @@ define(['angular'], function (angular) {
             }
         };
 
+        //左侧菜单收缩功能
+        $scope.switchMemu = function(item){
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            e.preventDefault();
+            var tmp = [];
+            for(var i in $scope.navList){
+                var tmpItem = $scope.navList[i];
+                if(tmpItem.isCurrent == true){
+                    tmpItem.isCurrent = false;
+                }
+                if(tmpItem == item){
+                    tmpItem.isCurrent = true;
+                }
+                tmp.push(tmpItem);
+            }
+            $scope.navList = tmp;
+        };
+
     }]);
 });

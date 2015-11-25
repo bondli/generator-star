@@ -3,12 +3,12 @@ define(['angular'], function (angular) {
 
     /**
      * @ngdoc function
-     * @name testapp1App.controller:LoginCtrl
+     * @name <%= scriptAppName %>.controller:LoginCtrl
      * @description
      * # LoginCtrl
-     * Controller of the testapp1App
+     * Controller of the <%= scriptAppName %>
      */
-    angular.module('testapp1App.controllers.LoginCtrl', [])
+    angular.module('<%= scriptAppName %>.controllers.LoginCtrl', [])
         .controller('LoginCtrl', ['$rootScope', '$scope', '$location', '$cookies', '$http', 'Apimap', function ($rootScope, $scope, $location, $cookies, $http, Apimap){
 
         //只有本地开发的时候才执行

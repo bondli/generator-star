@@ -6,14 +6,14 @@
                 <a ng-href="{{item.url}}">
                     <i class="iconfont icon-nav {{item.iconCls}}"></i>
                     <em class="nav-name">{{item.title}}</em>
-                    <i class="iconfont icon-cret"></i>
+                    <i class="iconfont icon-cret" ng-click="switchMemu(item)"></i>
                 </a>
             </dt>
             <dt ng-if="item.url==''" ng-class="{active: item.isCurrent==true}">
                 <span>
                     <i class="iconfont icon-nav {{item.iconCls}}"></i>
                     <em class="nav-name">{{item.title}}</em>
-                    <i class="iconfont icon-cret"></i>
+                    <i class="iconfont icon-cret" ng-click="switchMemu(item)"></i>
                 </span>
             </dt>
             <dd ng-class="{show: item.isCurrent==true}">
