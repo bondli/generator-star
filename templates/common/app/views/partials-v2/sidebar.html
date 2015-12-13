@@ -2,15 +2,15 @@
 <div id="side" ng-controller="SidebarCtrl" ng-class="{sideClose: systemData.navBarClose}">
     <div class="side-nav">
         <dl ng-repeat="item in navList">
-            <dt ng-if="item.url!=''" ng-class="{active: item.isCurrent==true}">
+            <dt ng-if="item.url.length" ng-class="{active: item.isCurrent==true}">
                 <a ng-href="{{item.url}}">
                     <i class="iconfont icon-nav {{item.iconCls}}"></i>
                     <em class="nav-name">{{item.title}}</em>
                     <i class="iconfont icon-cret" ng-click="switchMemu(item)"></i>
                 </a>
             </dt>
-            <dt ng-if="item.url==''" ng-class="{active: item.isCurrent==true}">
-                <span>
+            <dt ng-if="!item.url.length" ng-class="{active: item.isCurrent==true}">
+                <span ng-click="switchMemu(item)" style="cursor:pointer">
                     <i class="iconfont icon-nav {{item.iconCls}}"></i>
                     <em class="nav-name">{{item.title}}</em>
                     <i class="iconfont icon-cret" ng-click="switchMemu(item)"></i>
