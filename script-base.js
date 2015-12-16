@@ -104,7 +104,7 @@ Generator.prototype.otherTemplate = function (name, type, theme) {
     dest = path.join('scripts', 'services', name);
   }
   var srcFile = type + '/' + name + this.scriptSuffix;
-  if(theme != undefined){
+  if(theme != undefined && theme != ''){
     srcFile = type + '/' + name + '-' + theme + this.scriptSuffix;
   }
   yeoman.generators.Base.prototype.template.apply(this, [
