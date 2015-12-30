@@ -11,9 +11,9 @@ define(['angular'], function (angular) {
     angular.module('<%= scriptAppName %>.services.Apimap', []).service('Apimap', function Apimap() {
         var protocol = window.location.protocol,
             //port = window.location.port,
-            isDaily = (window.location.href.indexOf('taobao.net') === -1) ? false : true,
-            apiUrlPre = isDaily ? protocol + '//o2oseller.daily.taobao.net/' : protocol + '//o2oseller.taobao.com/',
-            curHost = window.location.hostname;
+            //isDaily = (window.location.href.indexOf('taobao.net') === -1) ? false : true,
+            curHost = window.location.hostname,
+            apiUrlPre = protocol + '//' + curHost + '/';
 
         if(curHost === '127.0.0.1' || curHost === 'localhost'){
             return {
