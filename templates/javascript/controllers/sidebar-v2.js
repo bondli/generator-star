@@ -31,6 +31,16 @@ define(['angular'], function (angular) {
                 }
             }).error(function(){});
         }
+        else {
+            $scope.navList = window.navList || [];
+            //解决可能会有部分模块用户因权限看不到带来前端显示的菜单bug
+            $scope.currList = [];
+            for(var i in $scope.navList){
+                if($scope.navList[i].isCurrent == true){
+                    $scope.currList = $scope.navList[i].subList;
+                }
+            }
+        }
 
         //获取当前url的hash值
         var getRoute = function(path){
